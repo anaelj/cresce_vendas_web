@@ -1,0 +1,147 @@
+{
+  "discounts": [
+    {
+      "id": "1",
+      "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+      "price": 109.95,
+      "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "rating": {
+        "rate": 3.9,
+        "count": 120
+      },
+      "discount": {
+        "status": false
+      }
+    },
+    {
+      "id": "2",
+      "title": "Mens Casual Premium Slim Fit T-Shirts ",
+      "price": 22.3,
+      "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "rating": {
+        "rate": 4.1,
+        "count": 259
+      },
+      "discount": {
+        "status": true
+      }
+    },
+    {
+      "id": "21",
+      "image": "/uploads/image005.png",
+      "title": "abc",
+      "description": "abc aaa",
+      "price": 1,
+      "discount": {
+        "status": false,
+        "type": "buy-more-pay-less",
+        "startDate": "2025-01-03T04:00:00.000Z",
+        "endDate": "2025-01-25T04:00:00.000Z",
+        "fromPrice": 0,
+        "toPrice": 0,
+        "buyQuantity": 2,
+        "payQuantity": 3
+      }
+    },
+    {
+      "id": "22",
+      "image": "/uploads/nuPayStep2.png",
+      "title": "abcde12",
+      "description": "abcde12",
+      "price": 1,
+      "discount": {
+        "status": true,
+        "type": "percentage",
+        "startDate": "2025-01-03T04:00:00.000Z",
+        "endDate": "2025-01-16T04:00:00.000Z",
+        "fromPrice": 0,
+        "toPrice": 0,
+        "buyQuantity": 0,
+        "payQuantity": 0
+      }
+    },
+    {
+      "id": "23",
+      "image": "/uploads/nuPayStep2.png",
+      "title": "abcde12-a",
+      "description": "abcde12-a",
+      "price": 0,
+      "discount": {
+        "status": false,
+        "type": "from-to",
+        "startDate": "2025-01-04T04:00:00.000Z",
+        "endDate": "2025-01-25T04:00:00.000Z",
+        "fromPrice": 1,
+        "toPrice": 2,
+        "buyQuantity": 0,
+        "payQuantity": 0
+      }
+    },
+    {
+      "id": "24",
+      "image": "/uploads/icon.webp",
+      "title": "abcde12-b",
+      "description": "abcde12-b",
+      "price": 2,
+      "discount": {
+        "status": false,
+        "type": "percentage",
+        "startDate": "2025-01-04T04:00:00.000Z",
+        "endDate": "2025-01-18T04:00:00.000Z",
+        "fromPrice": 0,
+        "toPrice": 0,
+        "buyQuantity": 0,
+        "payQuantity": 0
+      }
+    },
+    {
+      "id": "17",
+      "title": "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
+      "price": 39.99,
+      "description": "Lightweight perfet for trip or casual wear---Long sleeve with hooded, adjustable drawstring waist design. Button and zipper front closure raincoat, fully stripes Lined and The Raincoat has 2 side pockets are a good size to hold all kinds of things, it covers the hips, and the hood is generous but doesn't overdo it.Attached Cotton Lined Hood with Adjustable Drawstrings give it a real styled look.",
+      "category": "women's clothing",
+      "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg",
+      "rating": {
+        "rate": 3.8,
+        "count": 679
+      },
+      "discount": {
+        "status": true
+      }
+    },
+    {
+      "id": "18",
+      "image": "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
+      "title": "MBJ Women's Solid Short Sleeve Boat Neck V ",
+      "description": "95% RAYON 5% SPANDEX, Made in USA or Imported, Do Not Bleach, Lightweight fabric with great stretch for comfort, Ribbed on sleeves and neckline / Double stitching on bottom hem",
+      "price": 9.85,
+      "discount": {
+        "status": true,
+        "type": "percentage",
+        "fromPrice": 0,
+        "toPrice": 0,
+        "buyQuantity": 0,
+        "payQuantity": 0
+      }
+    },
+    {
+      "id": "16",
+      "title": "Lock and Love Women's Removable Hooded Faux Leather Moto Biker Jacket",
+      "price": 29.95,
+      "description": "100% POLYURETHANE(shell) 100% POLYESTER(lining) 75% POLYESTER 25% COTTON (SWEATER), Faux leather material for style and comfort / 2 pockets of front, 2-For-One Hooded denim style faux leather jacket, Button detail on waist / Detail stitching at sides, HAND WASH ONLY / DO NOT BLEACH / LINE DRY / DO NOT IRON",
+      "category": "women's clothing",
+      "image": "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg",
+      "rating": {
+        "rate": 2.9,
+        "count": 340
+      },
+      "discount": {
+        "status": false
+      }
+    }
+  ]
+}
