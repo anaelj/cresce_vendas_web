@@ -2,9 +2,12 @@
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Discount, Product } from '@/app/types/discount';
+import { Product } from '@/app/types/discount';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import DiscountPercentage from './discountTypes/percentage';
+import ByMorePayLessDiscount from './discountTypes/byMorePayLess';
+import DiscountFromTo from './discountTypes/fromTo';
 
 interface ViewDiscountModalProps {
   product: Product;
@@ -19,50 +22,25 @@ export function ViewDiscountModal({ product, onClose }: ViewDiscountModalProps) 
     onClose();
   };
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(price);
-  };
 
   const renderPriceInfo = () => {
     switch (product?.discount?.type) {
-      case 'from-to':
-        return (
-          <div className="flex gap-2">
-            <span className="line-through">{formatPrice(product?.discount?.fromPrice!)}</span>
-            <span className="font-bold">{formatPrice(product?.discount?.toPrice!)}</span>
-          </div>
-        );
-      case 'percentage':
-        return (
-          <div>
-            <span>{formatPrice(product.price!)}</span>
-            <span className="ml-2 text-green-600">-{product?.discount?.percentageDiscount}%</span>
-          </div>
-        );
-      case 'buy-more-pay-less':
-        return (
-          <div>
-            <span>{formatPrice(product.price!)}</span>
-            <span className="ml-2">Leve {product?.discount?.buyQuantity} Pague {product?.discount?.payQuantity}</span>
-          </div>
-        );
-      default:
-        return null;
+      case 'from-to': return (<DiscountFromTo product={product} />);
+      case 'percentage': return (<DiscountPercentage product={product} />);
+      case 'buy-more-pay-less': return (<ByMorePayLessDiscount product={product} /> );
+      default: return null;
     }
   };
 
   return (
     <Dialog open onOpenChange={() => onClose()}>
-      <DialogContent className="sm:max-w-[600px]">
+      <DialogContent className="sm:max-w-[659px]">
         <DialogHeader>
-          <DialogTitle>{product.title}</DialogTitle>
+          <DialogTitle>Detalhes do desconto</DialogTitle>
         </DialogHeader>
         
-        <div className="grid grid-cols-2 gap-6">
-          <div className="relative h-[250px]">
+        <div className="grid grid-cols-2 gap-6 p-6">
+          <div className="relative h-[250px] border">
             <Image
               src={product.image}
               alt={product.title}
@@ -70,36 +48,17 @@ export function ViewDiscountModal({ product, onClose }: ViewDiscountModalProps) 
               className="object-cover rounded-lg"
             />
           </div>
-          
           <div className="space-y-4">
-            <div>
-              <p className="text-sm text-gray-500">Tipo do Desconto</p>
-              <p className="font-medium">{product?.discount?.type}</p>
-            </div>
-            
-            <div>
-              <p className="text-sm text-gray-500">Nome</p>
-              <p className="font-medium">{product.title}</p>
-            </div>
-            
-            <div>
-              <p className="text-sm text-gray-500">Descrição</p>
-              <p>{product.description}</p>
-            </div>
-            
-            <div>
-              <p className="text-sm text-gray-500">Preço</p>
               {renderPriceInfo()}
-            </div>
           </div>
         </div>
         
-        <div className="flex justify-end gap-2 mt-6">
-          <Button variant="outline" onClick={onClose}>
-            Fechar
-          </Button>
-          <Button onClick={handleEdit}>
+        <div className="flex justify-center gap-2 mt-6 p-6">
+          <Button onClick={handleEdit} className="w-full bg-white text-customBlue border border-customBlue hover:border-2 hover:bg-white">
             Editar
+          </Button>
+          <Button variant="outline" onClick={onClose} className='w-full bg-background_sidebar text-white hover:bg-sky-500 hover:text-white'>
+            Fechar
           </Button>
         </div>
       </DialogContent>

@@ -2,14 +2,12 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Plus, Eye, GripVertical } from 'lucide-react';
-// import { Switch } from '@/components/ui/switch';
+import {GripVertical } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Link from 'next/link';
 import { Product  } from '@/app/types/discount';
 import Image from 'next/image';
 import { ViewDiscountModal } from './ViewDiscountModal';
-import { useRouter } from 'next/navigation';
 import { Switch } from '@/components/ui/switch';
 
 interface DiscountListProps {
@@ -33,7 +31,7 @@ export function DiscountList({ products, onStatusChange }: DiscountListProps) {
 
   return (
     <div className="p-6">
-      <div className="flex justify-between items-center mb-6 mt-24">
+      <div className="flex justify-between items-center mb-6 md:mt-20">
         <div>
             <h1 className="text-[32px] font-bold text-font-light">Lista de descontos</h1>
             <h2 className="text-[14px] text-font-light">{companyName} </h2>
@@ -74,16 +72,16 @@ export function DiscountList({ products, onStatusChange }: DiscountListProps) {
         </div>
       </div>
 
-      <div className="flex items-center p-4 bg-[#F1F4F5] text-font-medium">
+      <div className="flex items-center p-4 bg-[#F1F4F5] text-font-medium font-bold text-sm">
         <p className="flex-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">Desconto</p>
-        <p className="w-full max-w-[220px] sm:max-w-[150px] md:max-w-[180px]">Tipo</p>
+        <p className="w-full max-w-[220px] sm:max-w-[150px] md:max-w-[180px] pl-4">Tipo</p>
         <p className="w-full max-w-[220px] sm:max-w-[150px] md:max-w-[180px]">Data Ativação</p>
         <p className="w-full max-w-[100px] sm:max-w-[150px] md:max-w-[180px]">Data Inativação</p>
         <p className="w-full max-w-[50px] sm:max-w-[70px] md:max-w-[100px]">Status</p>
       </div>
 
 
-      <div className="bg-white rounded-b-lg shadow w-full">
+      <div className="bg-white rounded-b-lg shadow w-full text-font-dark text-sm">
         {filteredProducts.map((product) => (
           <div key={product.id} className="flex items-center p-4 border-b last:border-b-0">
             <GripVertical className="h-5 w-5 text-gray-400 cursor-move" />
@@ -96,11 +94,11 @@ export function DiscountList({ products, onStatusChange }: DiscountListProps) {
               />
             </div>
             <div className="flex-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
-              <p className="font-medium">{product.title}</p>
-              <p className="font-medium">{product.description}</p>
+              <p >{product.title}</p>
+              <p >{product.description}</p>
             </div>
             <div className="w-full max-w-[220px] sm:max-w-[150px] md:max-w-[180px]">
-              <p className="text-sm text-gray-500">{product?.discount?.type}</p>
+              <p >{product?.discount?.type}</p>
             </div>
               <div className="w-full max-w-[220px] sm:max-w-[150px] md:max-w-[185px]">
                 {/* <p className="text-sm text-gray-500">Ativação</p> */}

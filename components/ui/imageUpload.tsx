@@ -2,7 +2,7 @@
 
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { Trash2, Upload } from 'lucide-react'; 
+import { Trash2 } from 'lucide-react'; 
 interface ImageUploadProps {
   imageUrl: string | null;
   setImageUrl: (url: string | null) => void;
@@ -71,7 +71,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ imageUrl, setImageUrl }) => {
           className="border-2 border-dashed rounded-lg p-8 text-center cursor-pointer"
         >
           <input {...getInputProps()} />
-          <Upload className="mx-auto h-12 w-12 text-gray-400" />
+          <img src='/assets/uploadIcon.png' alt='upload' className="mx-auto h-51 w-73 text-gray-400" />
           <p className="mt-2">Arraste e solte a imagem aqui ou clique para upload!</p>
           <p className="text-sm text-gray-500 mt-1">
             Largura X altura recomendada 1000 x 1000px. Tamanho máximo 800KB.

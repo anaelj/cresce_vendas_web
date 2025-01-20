@@ -13,7 +13,7 @@ import ImageUpload from '@/components/ui/imageUpload';
 
 interface DiscountFormProps {
   initialData?: Product;
-  onSubmit:  () => void;
+  onSubmit: () => void;
 }
 
 export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
@@ -25,7 +25,8 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
     initialData?.discount?.endDate ? new Date(initialData?.discount?.endDate) : undefined
   );
   const [imageUrl, setImageUrl] = useState<string | null>(initialData?.image || null);
-  
+  const companyName = 'Loja: Super João - Nova loja online';
+
   const handleSubmit = async (form : FormData) => {
     const data = Object.fromEntries(form.entries());
 
@@ -41,6 +42,7 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
         startDate: startDate ? startDate.toISOString() : undefined,
         endDate: endDate ? endDate.toISOString() : undefined,
         fromPrice: parseFloat(data?.fromPrice?.toString() || '0'),
+        percentageDiscount: parseFloat(data?.percentageDiscount?.toString() || '0'),
         toPrice: parseFloat(data?.toPrice?.toString() || '0'),
         buyQuantity: parseFloat(data?.buyQuantity?.toString() || '0'),
         payQuantity: parseFloat(data?.payQuantity?.toString() || '0'),
@@ -52,33 +54,42 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
   };
 
   return (
-    <form method='POST' action={handleSubmit} className="space-y-6 max-w-3xl mx-auto p-6">
+    <form method='POST' action={handleSubmit} className="mx-2 sm:mx-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">
-          {initialData ? 'Editar Desconto' : 'Novo Desconto'}
-        </h1>
-        <div className="flex items-center gap-2">
-          <Label htmlFor="active">Ativo</Label>
-          <Switch id="active" defaultChecked={initialData?.discount?.status} name='status' />
+        <div className="flex justify-between items-center mb-6 md:mt-20">
+          <div>
+              <h1 className="text-[32px] font-bold text-font-light">{initialData ? 'Editar Desconto' : 'Cadastrar desconto'}</h1>
+              <h2 className="text-[14px] text-font-light">{companyName} </h2>
+          </div>
         </div>
       </div>
 
-      <div className="space-y-4">
-        <div>
-          <Label htmlFor="title">Nome</Label>
-          <Input 
-            id="title" 
-            name="title" 
-            defaultValue={initialData?.title} 
-          />
+      <div className="flex flex-col w-full gap-4 bg-white rounded-t-lg text-font-dark text-sm" >
+        <div className='flex w-full justify-between border-b p-4'>
+          <div>
+              <p>Formulário cadastro desconto</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <Label htmlFor="active">Ativo</Label>
+            <Switch id="active" defaultChecked={initialData?.discount?.status} name='status' />
+          </div>
+        </div>
+        <div className='pl-4 pr-4 gap-4'>
+          <div className='gap-2 flex flex-col mt-2'>
+            <Label htmlFor="title">Nome do desconto</Label>
+            <Input 
+              id="title" 
+              name="title" 
+              defaultValue={initialData?.title} 
+            />
+          </div>
+
+        <div className='gap-2 flex flex-col mt-4'>
+          <Label htmlFor="description">Descrição do desconto</Label>
+          <Input id="description" name="description" defaultValue={initialData?.description} />
         </div>
 
-        <div>
-          <Label htmlFor="description">Descrição</Label>
-          <Textarea id="description" name="description" defaultValue={initialData?.description} />
-        </div>
-
-        <div>
+        <div className='gap-2 flex flex-col mt-4'>
           <Label htmlFor="type">Tipo de Desconto</Label>
           <Select
             value={discountType}
@@ -88,30 +99,30 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
               <SelectValue placeholder="Selecione o tipo" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="buy-more-pay-less">Leve + Pague-</SelectItem>
+              <SelectItem value="buy-more-pay-less">Leve + Pague -</SelectItem>
               <SelectItem value="percentage">Percentual</SelectItem>
-              <SelectItem value="from-to">De Por</SelectItem>
+              <SelectItem value="from-to">DE / POR</SelectItem>
             </SelectContent>
           </Select>
         </div>
 
         {discountType === 'from-to' && (
           <div className="grid grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="fromPrice">Preço DE</Label>
+            <div className='gap-2 flex flex-col mt-4'>
+              <Label htmlFor="fromPrice">Preço "DE"</Label>
               <Input
                 id="fromPrice"
-                type="number"
+                type="text"
                 name='fromPrice'
                 defaultValue={initialData?.discount?.fromPrice}
               />
             </div>
-            <div>
-              <Label htmlFor="toPrice">Preço POR</Label>
+            <div className='gap-2 flex flex-col mt-4'>
+              <Label htmlFor="toPrice">Preço "POR"</Label>
               <Input
                 id="toPrice"
                 name="toPrice"
-                type="number"
+                type="text"
                 defaultValue={initialData?.discount?.toPrice}
               />
             </div>
@@ -120,7 +131,7 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
 
         {discountType === 'buy-more-pay-less' && (
           <div className="grid grid-cols-3 gap-4">
-            <div>
+            <div className='gap-2 flex flex-col mt-4'>
               <Label htmlFor="price">Preço</Label>
               <Input
                 id="price"
@@ -129,7 +140,7 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
                 defaultValue={initialData?.price}
               />
             </div>
-            <div>
+            <div className='gap-2 flex flex-col mt-4'>
               <Label htmlFor="buyQuantity">Leve</Label>
               <Input
                 id="buyQuantity"
@@ -138,7 +149,7 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
                 defaultValue={initialData?.discount?.buyQuantity}
               />
             </div>
-            <div>
+            <div className='gap-2 flex flex-col mt-4'>
               <Label htmlFor="payQuantity">Pague</Label>
               <Input
                 id="payQuantity"
@@ -152,21 +163,21 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
 
         {discountType === 'percentage' && (
           <div className="grid grid-cols-2 gap-4">
-            <div>
+            <div className='gap-2 flex flex-col mt-4'>
               <Label htmlFor="price">Preço</Label>
               <Input
                 id="price"
                 name="price"
-                type="number"
+                type="text"
                 defaultValue={initialData?.price}
               />
             </div>
-            <div>
+            <div className='gap-2 flex flex-col mt-4'>
               <Label htmlFor="percentageDiscount">Percentual</Label>
               <Input
                 id="percentageDiscount"
                 name="percentageDiscount"
-                type="number"
+                type="text"
                 defaultValue={initialData?.discount?.percentageDiscount}
               />
             </div>
@@ -174,27 +185,30 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
         )}
 
         <div className="grid grid-cols-2 gap-4">
-          <div>
-                <DatePicker
-                    date={startDate}
-                    setDate={setStartDate}
-                    label='Data da ativação'
-                />
+          <div className='gap-2 flex flex-col mt-4'>
+             <DatePicker
+                date={startDate}
+                setDate={setStartDate}
+                label='Data da ativação'
+             />
           </div>
-          <div>
-                <DatePicker
-                    date={endDate}
-                    setDate={setEndDate}
-                    label='Data da inativação'
-                />
+          <div className='gap-2 flex flex-col mt-4'>
+             <DatePicker
+                date={endDate}
+                setDate={setEndDate}
+                label='Data da inativação'
+             />
           </div>
         </div>
-
-        <ImageUpload setImageUrl={setImageUrl} imageUrl={imageUrl}  />
-
-        <Button type="submit" className="w-full">
-          Salvar
-        </Button>
+        <div className='gap-2 flex flex-col mt-12'>
+            <ImageUpload setImageUrl={setImageUrl} imageUrl={imageUrl}  />
+        </div>
+        <div className='flex mt-12 justify-end pb-8' >
+          <Button type="submit" className="bg-background_sidebar w-[200px] h-[40px]">
+              Salvar
+          </Button>
+        </div>
+        </div>
       </div>
     </form>
   );

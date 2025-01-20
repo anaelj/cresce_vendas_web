@@ -54,7 +54,7 @@
       "description": "abcde12",
       "price": 1,
       "discount": {
-        "status": true,
+        "status": false,
         "type": "percentage",
         "startDate": "2025-01-03T04:00:00.000Z",
         "endDate": "2025-01-16T04:00:00.000Z",
@@ -86,13 +86,14 @@
       "image": "/uploads/icon.webp",
       "title": "abcde12-b",
       "description": "abcde12-b",
-      "price": 2,
+      "price": 20,
       "discount": {
-        "status": false,
+        "status": true,
         "type": "percentage",
         "startDate": "2025-01-04T04:00:00.000Z",
         "endDate": "2025-01-18T04:00:00.000Z",
         "fromPrice": 0,
+        "percentageDiscount": 10,
         "toPrice": 0,
         "buyQuantity": 0,
         "payQuantity": 0
@@ -118,14 +119,17 @@
       "image": "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg",
       "title": "MBJ Women's Solid Short Sleeve Boat Neck V ",
       "description": "95% RAYON 5% SPANDEX, Made in USA or Imported, Do Not Bleach, Lightweight fabric with great stretch for comfort, Ribbed on sleeves and neckline / Double stitching on bottom hem",
-      "price": 9.85,
+      "price": 120,
       "discount": {
         "status": true,
-        "type": "percentage",
+        "type": "buy-more-pay-less",
+        "startDate": "2025-01-16T04:00:00.000Z",
+        "endDate": "2025-01-24T04:00:00.000Z",
         "fromPrice": 0,
+        "percentageDiscount": 0,
         "toPrice": 0,
-        "buyQuantity": 0,
-        "payQuantity": 0
+        "buyQuantity": 10,
+        "payQuantity": 8
       }
     },
     {
@@ -141,6 +145,42 @@
       },
       "discount": {
         "status": false
+      }
+    },
+    {
+      "id": "20",
+      "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
+      "title": "DANVOUY Womens T Shirt Casual Cotton Short",
+      "description": "95%Cotton,5%Spandex, Features: Casual, Short Sleeve, Letter Print,V-Neck,Fashion Tees, The fabric is soft and has some stretch., Occasion: Casual/Office/Beach/School/Home/Street. Season: Spring,Summer,Autumn,Winter.",
+      "price": 0,
+      "discount": {
+        "status": true,
+        "type": "from-to",
+        "startDate": "2025-01-13T04:00:00.000Z",
+        "endDate": "2025-01-25T04:00:00.000Z",
+        "fromPrice": 120,
+        "percentageDiscount": 0,
+        "toPrice": 100,
+        "buyQuantity": 0,
+        "payQuantity": 0
+      }
+    },
+    {
+      "id": "19",
+      "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg",
+      "title": "Opna Women's Short Sleeve Moisture",
+      "description": "100% Polyester, Machine wash, 100% cationic polyester interlock, Machine Wash & Pre Shrunk for a Great Fit, Lightweight, roomy and highly breathable with moisture wicking fabric which helps to keep moisture away, Soft Lightweight Fabric with comfortable V-neck collar and a slimmer fit, delivers a sleek, more feminine silhouette and Added Comfort",
+      "price": 7.95,
+      "discount": {
+        "status": false,
+        "type": "percentage",
+        "startDate": "2025-01-01T04:00:00.000Z",
+        "endDate": "2025-01-31T04:00:00.000Z",
+        "fromPrice": 0,
+        "percentageDiscount": 10,
+        "toPrice": 0,
+        "buyQuantity": 0,
+        "payQuantity": 0
       }
     }
   ]

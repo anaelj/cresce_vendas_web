@@ -40,7 +40,7 @@ export default function DiscountsPage() {
       
       <Sidebar />
       
-      <main className="flex-1 mt-16 md:mt-0">
+      <main className="flex-1">
         <DiscountList
           products={products}
           onStatusChange={handleStatusChange}

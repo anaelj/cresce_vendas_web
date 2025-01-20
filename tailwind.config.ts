@@ -22,6 +22,7 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
+        customBlue: '#007FBA',
         background: 'var(--background)',
         background_sidebar: 'var(--background-sidebar)',
         foreground: 'hsl(var(--foreground))',
@@ -54,7 +55,7 @@ const config: Config = {
           foreground: 'hsl(var(--destructive-foreground))',
         },
         border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
+        input: 'hsl(var(--input))', 
         ring: 'hsl(var(--ring))',
         chart: {
           '1': 'hsl(var(--chart-1))',
