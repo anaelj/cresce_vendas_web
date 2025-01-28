@@ -82,7 +82,7 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
           </div>
           <div className="flex items-center gap-2">
             <Label htmlFor="active">Ativo</Label>
-            <Switch id="active" defaultChecked={initialData?.discount?.status} name='status' />
+            <Switch id="active" defaultChecked={initialData?.discount?.status || !initialData} name='status' />
           </div>
         </div>
         <div className='pl-4 pr-4 gap-4'>
