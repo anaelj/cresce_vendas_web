@@ -84,7 +84,7 @@ export function DiscountList({ products, onStatusChange }: DiscountListProps) {
       <div className="bg-white rounded-b-lg shadow w-full text-font-dark text-sm">
         {filteredProducts.map((product) => (
           <div key={product.id} className="flex items-center p-4 border-b last:border-b-0">
-            <GripVertical className="h-5 w-5 text-gray-400 cursor-move" />
+            <GripVertical className="h-5 w-5 text-gray-400 cursor-move min-w-5" />
             <div className="min-w-[50px] w-[50px] h-[50px] relative mx-4">
               <Image
                 src={product.image}
@@ -93,9 +93,9 @@ export function DiscountList({ products, onStatusChange }: DiscountListProps) {
                 className="object-cover rounded"
               />
             </div>
-            <div className="flex-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+            <div className="flex-1 w-full">
               <p >{product.title}</p>
-              <p >{product.description}</p>
+              <p className="hidden md:block">{product.description}</p>
             </div>
             <div className="w-full max-w-[220px] sm:max-w-[150px] md:max-w-[180px]">
               <p >{product?.discount?.type}</p>

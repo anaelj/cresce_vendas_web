@@ -52,11 +52,13 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ imageUrl, setImageUrl }) => {
     <>
       {imageUrl ? (
         <div className="relative">
-          <img
-            src={imageUrl}
-            alt="Uploaded"
-            className="w-full h-auto rounded-lg"
-          />
+          <div className='flex justify-center'>
+            <img
+              src={imageUrl}
+              alt="Uploaded"
+              className="w-auto max-h-[300px]"
+            />
+          </div>
           <button
             type="button"
             onClick={handleRemoveImage}

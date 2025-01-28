@@ -30,6 +30,26 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
   const handleSubmit = async (form : FormData) => {
     const data = Object.fromEntries(form.entries());
 
+    if (!data.title || !data.description) {
+      alert('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
+
+    if (!imageUrl) {
+      alert('Por favor, selecione uma imagem.');
+      return;
+    }
+
+    if (!startDate || !endDate) {
+      alert('Por favor, selecione as datas de início e término.');
+      return;
+    }
+
+    if (startDate && endDate && startDate > endDate) {
+      alert('A data de início não pode ser maior que a data de término.');
+      return;
+    }
+
     const newData = {
       id: initialData?.id ,
       image: imageUrl,
@@ -58,7 +78,7 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
       <div className="flex justify-between items-center">
         <div className="flex justify-between items-center mb-6 md:mt-20">
           <div>
-              <h1 className="text-[32px] font-bold text-font-light">{initialData ? 'Editar Desconto' : 'Cadastrar desconto'}</h1>
+              <h1 className="text-[32px] font-bold text-font-light">{initialData ? 'Editar desconto' : 'Cadastrar desconto'}</h1>
               <h2 className="text-[14px] text-font-light">{companyName} </h2>
           </div>
         </div>
@@ -71,7 +91,7 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
           </div>
           <div className="flex items-center gap-2">
             <Label htmlFor="active">Ativo</Label>
-            <Switch id="active" defaultChecked={initialData?.discount?.status} name='status' />
+            <Switch id="active" defaultChecked={initialData?.discount?.status || !initialData} name='status' />
           </div>
         </div>
         <div className='pl-4 pr-4 gap-4'>
@@ -200,7 +220,7 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
              />
           </div>
         </div>
-        <div className='gap-2 flex flex-col mt-12'>
+        <div className="gap-2 flex flex-col mt-12 max-h-[300px] overflow-hidden">
             <ImageUpload setImageUrl={setImageUrl} imageUrl={imageUrl}  />
         </div>
         <div className='flex mt-12 justify-end pb-8' >

@@ -37,7 +37,7 @@
       "description": "abc aaa",
       "price": 1,
       "discount": {
-        "status": false,
+        "status": true,
         "type": "buy-more-pay-less",
         "startDate": "2025-01-03T04:00:00.000Z",
         "endDate": "2025-01-25T04:00:00.000Z",
@@ -71,7 +71,7 @@
       "description": "abcde12-a",
       "price": 0,
       "discount": {
-        "status": false,
+        "status": true,
         "type": "from-to",
         "startDate": "2025-01-04T04:00:00.000Z",
         "endDate": "2025-01-25T04:00:00.000Z",
@@ -172,12 +172,48 @@
       "description": "100% Polyester, Machine wash, 100% cationic polyester interlock, Machine Wash & Pre Shrunk for a Great Fit, Lightweight, roomy and highly breathable with moisture wicking fabric which helps to keep moisture away, Soft Lightweight Fabric with comfortable V-neck collar and a slimmer fit, delivers a sleek, more feminine silhouette and Added Comfort",
       "price": 7.95,
       "discount": {
-        "status": false,
+        "status": true,
         "type": "percentage",
         "startDate": "2025-01-01T04:00:00.000Z",
         "endDate": "2025-01-31T04:00:00.000Z",
         "fromPrice": 0,
         "percentageDiscount": 10,
+        "toPrice": 0,
+        "buyQuantity": 0,
+        "payQuantity": 0
+      }
+    },
+    {
+      "id": "25",
+      "image": "/uploads/casaco2.jpg",
+      "title": "teset 0111",
+      "description": "teste 0111",
+      "price": 0,
+      "discount": {
+        "status": true,
+        "type": "from-to",
+        "startDate": "2025-01-01T04:00:00.000Z",
+        "endDate": "2025-01-18T04:00:00.000Z",
+        "fromPrice": 20,
+        "percentageDiscount": 0,
+        "toPrice": 10,
+        "buyQuantity": 0,
+        "payQuantity": 0
+      }
+    },
+    {
+      "id": "26",
+      "image": "/uploads/Frame.svg",
+      "title": "teste",
+      "description": "teste",
+      "price": 10,
+      "discount": {
+        "status": true,
+        "type": "percentage",
+        "startDate": "2025-01-14T04:00:00.000Z",
+        "endDate": "2025-01-15T04:00:00.000Z",
+        "fromPrice": 0,
+        "percentageDiscount": 20,
         "toPrice": 0,
         "buyQuantity": 0,
         "payQuantity": 0
