@@ -236,6 +236,24 @@
         "buyQuantity": 0,
         "payQuantity": 0
       }
+    },
+    {
+      "id": "28",
+      "image": "/uploads/casaco2.jpg",
+      "title": "teste 1.99",
+      "description": "teste 99",
+      "price": 10,
+      "discount": {
+        "status": true,
+        "type": "buy-more-pay-less",
+        "startDate": "2025-01-01T04:00:00.000Z",
+        "endDate": "2025-01-18T04:00:00.000Z",
+        "fromPrice": 0,
+        "percentageDiscount": 0,
+        "toPrice": 0,
+        "buyQuantity": 7,
+        "payQuantity": 5
+      }
     }
   ]
 }

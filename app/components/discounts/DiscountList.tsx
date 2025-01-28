@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { ViewDiscountModal } from './ViewDiscountModal';
 import { Switch } from '@/components/ui/switch';
 import { useCompany } from '@/app/context/CompanyContext';
+import { getDiscountDescription } from '@/lib/discount';
 
 interface DiscountListProps {
   products: Product[];
@@ -31,7 +32,7 @@ export function DiscountList({ products, onStatusChange }: DiscountListProps) {
   });
 
   return (
-    <div className="p-6">
+    <div className="p-6 max-[500px]:p-1">
       <div className="flex justify-between items-center mb-6 md:mt-20">
         <div>
             <h1 className="text-[32px] font-bold text-font-light">Lista de descontos</h1>
@@ -75,9 +76,10 @@ export function DiscountList({ products, onStatusChange }: DiscountListProps) {
 
       <div className="flex items-center p-4 bg-[#F1F4F5] text-font-medium font-bold text-sm">
         <p className="flex-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">Desconto</p>
-        <p className="w-full max-w-[220px] sm:max-w-[150px] md:max-w-[180px] pl-4">Tipo</p>
-        <p className="w-full max-w-[220px] sm:max-w-[150px] md:max-w-[180px]">Data Ativação</p>
+        <p className="w-full max-w-[220px] sm:max-w-[150px] md:max-w-[180px] pl-4 ">Tipo</p>
+        <p className="w-full max-w-[200px] pl-4 "> Data Ativação</p>
         <p className="w-full max-w-[100px] sm:max-w-[150px] md:max-w-[180px]">Data Inativação</p>
+        <p className="w-full max-w-[50px] sm:max-w-[70px] md:max-w-[100px]">Status</p>
         <p className="w-full max-w-[50px] sm:max-w-[70px] md:max-w-[100px]">Status</p>
       </div>
 
@@ -86,28 +88,26 @@ export function DiscountList({ products, onStatusChange }: DiscountListProps) {
         {filteredProducts.map((product) => (
           <div key={product.id} className="flex items-center p-4 border-b last:border-b-0">
             <GripVertical className="h-5 w-5 text-gray-400 cursor-move min-w-5" />
-            <div className="min-w-[50px] w-[50px] h-[50px] relative mx-4">
-              <Image
+            <div className="min-w-[60px] w-[60px] h-[60px] mx-4 border border-[#E1E1E1] border-opacity-30 rounded-[5px] p-1 flex justify-center">
+              <img
                 src={product.image}
                 alt={product.title}
-                fill
-                className="object-cover rounded"
               />
             </div>
-            <div className="flex-1 w-full">
-              <p >{product.title}</p>
-              <p className="hidden md:block">{product.description}</p>
+            <div className="flex-1 flex-col">
+              <p className='flex flex-wrap max-h-[133px]'>{product.title}</p>
+              <p className="block md:hidden">{getDiscountDescription(product?.discount?.type)}</p>
+              {/* <p className="hidden md:block">{product.description}</p> */}
             </div>
-            <div className="w-full max-w-[220px] sm:max-w-[150px] md:max-w-[180px]">
-              <p >{product?.discount?.type}</p>
+            <div className="w-full max-w-[220px] sm:max-w-[150px] md:max-w-[180px] hidden md:block">
+              <p className="hidden md:block pl-4">{getDiscountDescription(product?.discount?.type)}</p>
             </div>
-              <div className="w-full max-w-[220px] sm:max-w-[150px] md:max-w-[185px]">
-                {/* <p className="text-sm text-gray-500">Ativação</p> */}
+              <div className="w-full max-w-[200px] pl-4 ">
                 <p>{product?.discount?.startDate && new Date(product?.discount?.startDate).toLocaleDateString()}</p>
+                <p className="block min-[400px]:hidden">{product?.discount?.endDate && new Date(product?.discount?.endDate).toLocaleDateString()}</p>
               </div>
-              <div className="w-full max-w-[220px] sm:max-w-[150px] md:max-w-[185px]">
-                {/* <p className="text-sm text-gray-500">Inativação</p> */}
-                <p>{product?.discount?.endDate && new Date(product?.discount?.endDate).toLocaleDateString()}</p>
+              <div className="w-full max-w-[200px] ">
+                <p className="hidden min-[400px]:block ">{product?.discount?.endDate && new Date(product?.discount?.endDate).toLocaleDateString()}</p>
               </div>
               <Switch checked={product?.discount?.status }
                 onCheckedChange={(checked) => onStatusChange(product.id, checked)}  />
