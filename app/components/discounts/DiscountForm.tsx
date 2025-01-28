@@ -10,6 +10,7 @@ import { actionSubmitDiscount} from '@/app/actions/submitDiscount';
 import DatePicker from '@/components/ui/calendar';
 import { actionUpdateDiscount } from '@/app/actions/updateDiscount';
 import ImageUpload from '@/components/ui/imageUpload';
+import { useCompany } from '@/app/context/CompanyContext';
 
 interface DiscountFormProps {
   initialData?: Product;
@@ -25,23 +26,11 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
     initialData?.discount?.endDate ? new Date(initialData?.discount?.endDate) : undefined
   );
   const [imageUrl, setImageUrl] = useState<string | null>(initialData?.image || null);
-  const companyName = 'Loja: Super João - Nova loja online';
+  const { companyName } = useCompany()
 
   const handleSubmit = async (form : FormData) => {
-    const data = Object.fromEntries(form.entries());
-
-    if (!data.title || !data.description) {
-      alert('Por favor, preencha todos os campos obrigatórios.');
-      return;
-    }
-
     if (!imageUrl) {
       alert('Por favor, selecione uma imagem.');
-      return;
-    }
-
-    if (!startDate || !endDate) {
-      alert('Por favor, selecione as datas de início e término.');
       return;
     }
 
@@ -49,6 +38,8 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
       alert('A data de início não pode ser maior que a data de término.');
       return;
     }
+
+    const data = Object.fromEntries(form.entries());
 
     const newData = {
       id: initialData?.id ,
@@ -91,7 +82,7 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
           </div>
           <div className="flex items-center gap-2">
             <Label htmlFor="active">Ativo</Label>
-            <Switch id="active" defaultChecked={initialData?.discount?.status || !initialData} name='status' />
+            <Switch id="active" defaultChecked={initialData?.discount?.status} name='status' />
           </div>
         </div>
         <div className='pl-4 pr-4 gap-4'>
@@ -220,7 +211,7 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
              />
           </div>
         </div>
-        <div className="gap-2 flex flex-col mt-12 max-h-[300px] overflow-hidden">
+        <div className='gap-2 flex flex-col mt-12'>
             <ImageUpload setImageUrl={setImageUrl} imageUrl={imageUrl}  />
         </div>
         <div className='flex mt-12 justify-end pb-8' >

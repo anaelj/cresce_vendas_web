@@ -9,6 +9,7 @@ import { Product  } from '@/app/types/discount';
 import Image from 'next/image';
 import { ViewDiscountModal } from './ViewDiscountModal';
 import { Switch } from '@/components/ui/switch';
+import { useCompany } from '@/app/context/CompanyContext';
 
 interface DiscountListProps {
   products: Product[];
@@ -19,7 +20,7 @@ export function DiscountList({ products, onStatusChange }: DiscountListProps) {
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [typeFilter, setTypeFilter] = useState<string>('all');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const companyName = 'Loja: Super João - Nova loja online';
+  const { companyName } = useCompany();
   
   const filteredProducts = products.filter(product => {
     const matchesStatus = statusFilter === 'all' || 
@@ -43,7 +44,7 @@ export function DiscountList({ products, onStatusChange }: DiscountListProps) {
           <span className='text-font-light'>Descontos cadastrados</span>
           <Link href="/discounts/new">
             <Button className='bg-background_sidebar text-[16px] font-normal'>
-              Novo Desconto
+              Novo desconto
             </Button>
           </Link>
         </div>

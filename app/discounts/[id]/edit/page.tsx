@@ -6,6 +6,7 @@ import { DiscountForm } from '@/app/components/discounts/DiscountForm';
 import { useRouter } from 'next/navigation';
 import {  Product } from '@/app/types/discount';
 import { showDiscount } from '@/app/actions/showDiscount';
+import { CompanyProvider } from '@/app/context/CompanyContext';
 
 export default function EditDiscountPage({ params }: { params: { id: string } }) {
   const router = useRouter();
@@ -31,11 +32,13 @@ export default function EditDiscountPage({ params }: { params: { id: string } })
   }
 
   return (
-    <div className="flex flex-col sm:flex-col md:flex-row xl:flex-row justify-start">
-      <Sidebar />
-      <main className="flex-1 justify-start">
-        <DiscountForm initialData={product} onSubmit={handleSubmit} />
-      </main>
-    </div>
+    <CompanyProvider>
+      <div className="flex flex-col sm:flex-col md:flex-row xl:flex-row justify-start">
+        <Sidebar />
+        <main className="flex-1 justify-start">
+          <DiscountForm initialData={product} onSubmit={handleSubmit} />
+        </main>
+      </div>
+    </CompanyProvider>
   );
 }

@@ -6,6 +6,7 @@ import { DiscountList } from '@/app/components/discounts/DiscountList';
 import { Product } from '@/app/types/discount';
 import { loadProducts } from '../actions/loadDiscounts';
 import { actionUpdateDiscount } from '../actions/updateDiscount';
+import { CompanyProvider } from '../context/CompanyContext';
 
 export default function DiscountsPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -36,8 +37,8 @@ export default function DiscountsPage() {
   };
 
   return (
+    <CompanyProvider>
     <div className="flex flex-col sm:flex-col md:flex-row xl:flex-row justify-start">
-      
       <Sidebar />
       
       <main className="flex-1">
@@ -47,5 +48,6 @@ export default function DiscountsPage() {
         />
       </main>
     </div>
+    </CompanyProvider>
   );
 }
