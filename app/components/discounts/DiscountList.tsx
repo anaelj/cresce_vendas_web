@@ -76,10 +76,9 @@ export function DiscountList({ products, onStatusChange }: DiscountListProps) {
 
       <div className="flex items-center p-4 bg-[#F1F4F5] text-font-medium font-bold text-sm">
         <p className="flex-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">Desconto</p>
-        <p className="w-full max-w-[220px] sm:max-w-[150px] md:max-w-[180px] pl-4 ">Tipo</p>
-        <p className="w-full max-w-[200px] pl-4 "> Data Ativação</p>
-        <p className="w-full max-w-[100px] sm:max-w-[150px] md:max-w-[180px]">Data Inativação</p>
-        <p className="w-full max-w-[50px] sm:max-w-[70px] md:max-w-[100px]">Status</p>
+        <p className="w-full max-w-[220px] sm:max-w-[150px] md:max-w-[180px] pl-1 ">Tipo</p>
+        <p className="w-full max-w-[200px] pl-1 "> Data Ativação</p>
+        <p className="w-full max-w-[100px] sm:max-w-[150px] md:max-w-[180px] ">Data Inativação</p>
         <p className="w-full max-w-[50px] sm:max-w-[70px] md:max-w-[100px]">Status</p>
       </div>
 
@@ -106,11 +105,11 @@ export function DiscountList({ products, onStatusChange }: DiscountListProps) {
                 <p>{product?.discount?.startDate && new Date(product?.discount?.startDate).toLocaleDateString()}</p>
                 <p className="block min-[400px]:hidden">{product?.discount?.endDate && new Date(product?.discount?.endDate).toLocaleDateString()}</p>
               </div>
-              <div className="w-full max-w-[200px] ">
+              <div className="w-full max-w-[200px] pl-2">
                 <p className="hidden min-[400px]:block ">{product?.discount?.endDate && new Date(product?.discount?.endDate).toLocaleDateString()}</p>
               </div>
               <Switch checked={product?.discount?.status }
-                onCheckedChange={(checked) => onStatusChange(product.id, checked)}  />
+                onCheckedChange={(checked) => onStatusChange(product.id, checked)}  className='mr-4' />
              
               <Button
                 variant="ghost"

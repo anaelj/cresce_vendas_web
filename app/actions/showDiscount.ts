@@ -12,7 +12,7 @@ export async function showDiscount(id : string) {
       }
    }
   
-   const responseDiscount = await fetch(`http://localhost:3333/discounts/${id.toString()}`);
+   const responseDiscount = await fetch(`${process.env.REACT_APP_API}/discounts/${id.toString()}`);
   
    let discountData;
    if (responseDiscount.ok) discountData = await responseDiscount.json();

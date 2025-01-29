@@ -27,7 +27,7 @@ export async function loadProducts() {
   const responseProduct = await fetch(`https://fakestoreapi.com/products`);
   const productData = await responseProduct.json();
 
-  const responseDiscount = await fetch(`http://localhost:3333/discounts`);
+  const responseDiscount = await fetch(`${process.env.REACT_APP_API}/discounts`);
   let discountData = [];
   if (responseDiscount.ok) discountData = await responseDiscount.json();
 

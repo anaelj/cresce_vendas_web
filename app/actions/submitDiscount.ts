@@ -16,7 +16,7 @@ export async function actionSubmitDiscount(data : any) {
 
     const maxId = getMaxId(products);
 
-   const response = await fetch('http://localhost:3333/discounts', {
+   const response = await fetch(`${process.env.REACT_APP_API}/discounts`, {
       method: 'POST',
       body: JSON.stringify({id: String(Number(maxId)+1), ...data}),
       headers: {

@@ -16,7 +16,7 @@ export async function actionUpdateDiscount(data : any) {
 
       const productData = await responseProduct.json();      
       
-      const discountResponse = await fetch(`http://localhost:3333/discounts?id=${productData.id.toString()}`);
+      const discountResponse = await fetch(`${process.env.REACT_APP_API}/discounts?id=${productData.id.toString()}`);
       
       let discountData;
       if (discountResponse.ok) discountData = await discountResponse.json();
@@ -26,7 +26,7 @@ export async function actionUpdateDiscount(data : any) {
 
       let newResponseDiscount;
       if (discountData && discountData[0]?.id) {
-         newResponseDiscount = await fetch(`http://localhost:3333/discounts/${discountData[0]?.id.toString()}`, {
+         newResponseDiscount = await fetch(`${process.env.REACT_APP_API}/discounts/${discountData[0]?.id.toString()}`, {
             method: 'PUT',
             body,
             headers: {
@@ -35,7 +35,7 @@ export async function actionUpdateDiscount(data : any) {
          });
 
       } else {
-         newResponseDiscount = await fetch('http://localhost:3333/discounts', {
+         newResponseDiscount = await fetch(`${process.env.REACT_APP_API}/discounts`, {
             method: 'POST',
             body,
             headers: {

@@ -40,12 +40,11 @@ export function ViewDiscountModal({ product, onClose }: ViewDiscountModalProps) 
         </DialogHeader>
         
         <div className="grid grid-cols-2 gap-6 p-6">
-          <div className="relative h-[250px] border">
-            <Image
+        <div className="max-w-[250px] border max-h-[250px] p-2 flex justify-center rounded-[5px]">
+            <img
               src={product.image}
               alt={product.title}
-              fill
-              className="object-cover rounded-lg"
+              className='w-auto h-auto'
             />
           </div>
           <div className="space-y-4">
