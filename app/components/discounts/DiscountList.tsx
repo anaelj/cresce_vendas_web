@@ -1,12 +1,12 @@
 'use client';
 
+import React from 'react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {GripVertical } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Link from 'next/link';
 import { Product  } from '@/app/types/discount';
-import Image from 'next/image';
 import { ViewDiscountModal } from './ViewDiscountModal';
 import { Switch } from '@/components/ui/switch';
 import { useCompany } from '@/app/context/CompanyContext';
@@ -35,47 +35,54 @@ export function DiscountList({ products, onStatusChange }: DiscountListProps) {
     <div className="p-6 max-[500px]:p-1">
       <div className="flex justify-between items-center mb-6 md:mt-20">
         <div>
-            <h1 className="text-[32px] font-bold text-font-light">Lista de descontos</h1>
+            <h1 className="text-[32px] font-medium text-font-light">Lista de descontos</h1>
             <h2 className="text-[14px] text-font-light">{companyName} </h2>
         </div>
       </div>
 
       <div className="flex flex-col w-full gap-4 bg-white rounded-t-lg" >
         <div className="flex gap-4 justify-between p-3 border-b items-center">
-          <span className='text-font-light'>Descontos cadastrados</span>
+          <span className='text-font-light font-normal text-[20px]' >Descontos cadastrados</span>
           <Link href="/discounts/new">
-            <Button className='bg-background_sidebar text-[16px] font-normal'>
+            <Button className='bg-background_sidebar text-[16px] font-normal w-[200px]'>
               Novo desconto
             </Button>
           </Link>
         </div>
 
         <div className="flex gap-4 w-full p-3 pb-6">
-          <Select value={statusFilter} onValueChange={setStatusFilter}>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Filtrar por status" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="active">Ativos</SelectItem>
-              <SelectItem value="inactive">Inativos</SelectItem>
-            </SelectContent>
-          </Select>
-
-          <Select value={typeFilter} onValueChange={setTypeFilter}>
+          <div className='flex flex-col w-full'>
+          <label htmlFor="status-filter" className="text-[16px] font-normal text-[#455a64] pb-2">Status</label>
+              <Select value={statusFilter} onValueChange={setStatusFilter} defaultValue="all">
+                <SelectTrigger id="status-filter" className="w-full">
+                  <SelectValue placeholder="Filtrar por status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Todos</SelectItem>
+                  <SelectItem value="active">Ativos</SelectItem>
+                  <SelectItem value="inactive">Inativos</SelectItem>
+                </SelectContent>
+              </Select>
+          </div>
+          <div className='flex flex-col w-full'>
+          <label className="text-[16px] font-normal text-[#455a64] pb-2">Tipo desconto</label>
+          <Select value={typeFilter} onValueChange={setTypeFilter} defaultValue="all">
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Filtrar por tipo" />
             </SelectTrigger>
             <SelectContent>
+              <SelectItem value="all">Todos</SelectItem>
               <SelectItem value="buy-more-pay-less">Leve + Pague-</SelectItem>
               <SelectItem value="percentage">Percentual</SelectItem>
               <SelectItem value="from-to">De Por</SelectItem>
             </SelectContent>
           </Select>
+          </div>
         </div>
       </div>
 
-      <div className="flex items-center p-4 bg-[#F1F4F5] text-font-medium font-bold text-sm">
-        <p className="flex-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/4">Desconto</p>
+      <div className="flex items-center p-4 bg-[#F1F4F5] text-font-medium font-medium text-sm">
+        <p className="flex-1 w-full sm:w-1/2 md:w-1/3 lg:w-1/4" >Desconto</p>
         <p className="w-full max-w-[220px] sm:max-w-[150px] md:max-w-[180px] pl-1 ">Tipo</p>
         <p className="w-full max-w-[200px] pl-1 "> Data Ativação</p>
         <p className="w-full max-w-[100px] sm:max-w-[150px] md:max-w-[180px] ">Data Inativação</p>

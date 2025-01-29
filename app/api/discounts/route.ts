@@ -33,7 +33,7 @@ export async function POST(request: Request) {
 
 export async function PUT(request: Request) {
   const data = await request.json();
-  const index = discounts.findIndex(d => d.id === data.id);
+  const index = discounts.findIndex((d : any) => d?.id === data.id);
   
   if (index === -1) {
     return NextResponse.json({ error: 'Discount not found' }, { status: 404 });

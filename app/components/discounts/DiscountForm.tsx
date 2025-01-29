@@ -69,13 +69,13 @@ export function DiscountForm({ initialData, onSubmit  }: DiscountFormProps) {
       <div className="flex justify-between items-center">
         <div className="flex justify-between items-center mb-6 md:mt-20">
           <div>
-              <h1 className="text-[32px] font-bold text-font-light">{initialData ? 'Editar desconto' : 'Cadastrar desconto'}</h1>
+              <h1 className="text-[32px] font-medium text-font-light">{initialData ? 'Editar desconto' : 'Cadastrar desconto'}</h1>
               <h2 className="text-[14px] text-font-light">{companyName} </h2>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col w-full gap-4 bg-white rounded-t-lg text-font-dark text-sm" >
+      <div className="flex flex-col w-full gap-4 bg-white rounded-t-lg text-font-medium font-normal text-[20px]" >
         <div className='flex w-full justify-between border-b p-4'>
           <div>
               <p>Formulário cadastro desconto</p>
